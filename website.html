@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .season-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .season-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .season-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .season-card h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .season-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Project Pages */
+        .project-header {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-header h1 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .project-header .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .project {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project:hover {
+            transform: translateX(5px);
+        }
+
+        .project h2 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .project h3 {
+            color: #667eea;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .project p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .project ul {
+            margin-left: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #24292e;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .github-link:hover {
+            background: #000;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .season-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-title">FTC Robotics Portfolio</div>
+            <div class="nav-links">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('centerstage')">Centerstage</a>
+                <a onclick="showPage('into-the-deep')">Into the Deep</a>
+                <a onclick="showPage('hexapod')">Hexapod</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>CAD Design Portfolio</h1>
+                <p>Exploring innovative robotics solutions through iterative design</p>
+            </div>
+            
+            <div class="season-cards">
+                <div class="season-card" onclick="showPage('into-the-deep')">
+                    <h2>Into the Deep</h2>
+                    <p>2024-2025 Season</p>
+                    <p>Featuring advanced extendo mechanisms, servo-driven spool systems, and optimized lift assemblies with inverse kinematics calculations.</p>
+                </div>
+                
+                <div class="season-card" onclick="showPage('centerstage')">
+                    <h2>Centerstage</h2>
+                    <p>2023-2024 Season</p>
+                    <p>Showcasing modular swerve drive pods, lightweight PLA intakes, and precision claw mechanisms for accurate scoring.</p>
+                </div>
+                
+                <div class="season-card" onclick="showPage('hexapod')">
+                    <h2>Hexapod</h2>
+                    <p>Personal Project</p>
+                    <p>Six-legged walking robot with custom inverse kinematics and gait patterns for dynamic locomotion.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Into the Deep Page -->
+        <div id="into-the-deep" class="page">
+            <div class="project-header">
+                <h1>Into the Deep</h1>
+                <p class="subtitle">2024-2025 Season Projects</p>
+            </div>
+
+            <div class="project">
+                <span class="date-badge">December 2024 - March 2025</span>
+                <h2>Into the Deep Robot V2</h2>
+                <p>This redesign addressed the main concerns with the original robot by directly attaching the lift to the drivetrain instead of using a separate plate and using a wheel/spool assembly instead of a linkage. Added significantly more crossbeams for improved stability.</p>
+                
+                <h3>Carousel Wheel / Spool</h3>
+                <p>Due to the complexity and unreliability of the DRV4B, I transitioned to a string-driven assembly similar to the vertical extension but driven with servos. The spool had to be servo-driven due to the eight-motor limit imposed on FTC robots, and the weight of the slide assembly needed to remain under a certain threshold.</p>
+                <p>The challenge with servos was their inability to output enough RPM to move the extendo at the required speed for high-cycle performance throughout each match. To solve this, I used a series of inverse kinematics equations in comparison to a motor of 1150 RPM to calculate the necessary gear ratio to achieve speeds as close as possible to what was needed.</p>
+                
+                <h3>Arm / Claw Assembly</h3>
+                <p>Gained an additional degree of freedom for claw rotation. The claw design was changed to one that was open-sourced by Gear Wizards, FTC team 16917. Additionally, the arm was compacted and driven by one servo motor instead of two, reducing weight.</p>
+            </div>
+
+            <div class="project">
+                <span class="date-badge">September 2024 - December 2024</span>
+                <h2>Into the Deep Robot V1</h2>
+                <p>My overall design concept was to create an extendo on the lift that would be able to intake from both the front and back of the robot to score the game elements. This was the first version before the team rebuild.</p>
+                
+                <h3>Double Reverse Virtual Four-Bar (DRV4B)</h3>
+                <p>Inspired by FTC team 9614 Hyperion during their Centerstage game, I chose this linkage for its impressive range of motion, being able to reach both the back and front of its pivot point. However, the design proved bulky and required excessive torque.</p>
+                <p>The main issue was the cantilever design and poor constraint, causing the first stage in the linkage to often fail to rotate the gears at the top. For the first qualifier of the year, we replaced this linkage with a two-bar for reliability.</p>
+                
+                <h3>Stringing System</h3>
+                <p>For linear vertical extension, I implemented a complex rigging system that relied on only one motor per side to retract and extend. The main challenges were with tensioning and stability due to the plate mounting the slides being unstable.</p>
+            </div>
+
+            <div class="project">
+                <span class="date-badge">September 2024</span>
+                <h2>Robot in Two Days</h2>
+                <p>My team and I decided on a telescoping mechanism using slides. I designed the pivot mechanism using 3D printed gears and included a loony claw on the end of our slides.</p>
+                <p>Instead of modeling the drivetrain, I measured the necessary distances and assembled the parts on CAD based on those measurements. The main issue was my unfamiliarity with stringing systems, and the stringing ultimately didn't work as intended.</p>
+            </div>
+        </div>
+
+        <!-- Centerstage Page -->
+        <div id="centerstage" class="page">
+            <div class="project-header">
+                <h1>Centerstage</h1>
+                <p class="subtitle">2023-2024 Season Projects</p>
+            </div>
+
+            <div class="project">
+                <span class="date-badge">June 2024 - August 2024</span>
+                <h2>Swerve Drive</h2>
+                <p>For a team summer project, I spent two to three weeks creating 5 different CAD designs until I settled on one that felt satisfactory and proceeded to build it. The hardest challenge was creating a swerve that was compact, and though I wish I could've made it more compact, I'm satisfied with the final result.</p>
+                <p>I designed each pod to be modular for easy assembly and integration with other robot parts. I particularly enjoyed creating a battery holder that connects the back two swerve pods and constrains the battery via a sliding plate held in by two pins.</p>
+            </div>
+
+            <div class="project">
+                <span class="date-badge">January 2024 - June 2024</span>
+                <h2>Intake</h2>
+                <p>Due to the weight of the original flip-down intake, I designed a new intake that was significantly lighter by attaching the ramp to the drivetrain rather than making it part of the intake assembly. All plates were made from PLA plastic to reduce weight.</p>
+                <p>To prevent dragging, the intake hovers over the pixels. There are guides on the ramp and a cover on the top of the intake to prevent pixels from getting stuck. The main issue was difficulty intaking from preset stacks.</p>
+            </div>
+
+            <div class="project">
+                <span class="date-badge">December 2023</span>
+                <h2>Claw</h2>
+                <p>To solve the inaccuracy of the bucket design my team used to hold scoring elements, I created one of my first CAD projects on the team: a claw design.</p>
+                <p>The claw arms were to be passively tied by rubber bands to screws above them, and two servos would push the claw arms down into the center of the pixel to hold it in place. I was inspired by TehnoZ's design.</p>
+                <p>Though prototyped and proven to work, it required too much change on the robot at that time to implement.</p>
+            </div>
+        </div>
+
+        <!-- Hexapod Page -->
+        <div id="hexapod" class="page">
+            <div class="project-header">
+                <h1>Hexapod Walking Robot</h1>
+                <p class="subtitle">Personal Project</p>
+                <a href="https://github.com/jzhao60/Hexapod" target="_blank" class="github-link">
+                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    View on GitHub
+                </a>
+            </div>
+
+            <div class="project">
+                <h2>Project Overview</h2>
+                <p>A six-legged walking robot designed from the ground up, featuring custom mechanical design, inverse kinematics calculations, and dynamic gait patterns for stable locomotion across various terrains.</p>
+                
+                <div class="image-grid">
+                    <img src="https://raw.githubusercontent.com/jzhao60/Hexapod/main/images/image1.png" alt="Hexapod leg mechanism" onerror="this.style.display='none'">
+                    <img src="https://raw.githubusercontent.com/jzhao60/Hexapod/main/images/image2.png" alt="Full hexapod assembly" onerror="this.style.display='none'">
+                    <img src="https://raw.githubusercontent.com/jzhao60/Hexapod/main/images/image3.png" alt="Hexapod gait pattern" onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <div class="project">
+                <h2>Mechanical Design</h2>
+                <p>Each leg features a three-degree-of-freedom design with coxa, femur, and tibia segments, allowing for complex movement patterns. The body structure provides a stable platform for electronics and battery placement while maintaining a low center of gravity.</p>
+                
+                <h3>Key Features</h3>
+                <p>The hexapod design incorporates servo-driven joints with precise angular control, lightweight 3D-printed components for the leg structure, and modular leg assembly for easy maintenance and modifications. Custom mounting brackets ensure proper servo alignment and reduce mechanical stress during operation.</p>
+            </div>
+
+            <div class="project">
+                <h2>Kinematics & Control</h2>
+                <p>Implemented inverse kinematics algorithms to translate desired foot positions into servo angles, enabling smooth and natural walking motion. The control system supports multiple gait patterns including tripod gait for speed and wave gait for stability.</p>
+                
+                <h3>Technical Implementation</h3>
+                <p>The software calculates joint angles in real-time based on body position and leg trajectory. Coordinated leg movements ensure the hexapod maintains static stability, with at least three legs in contact with the ground at all times during the tripod gait.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
