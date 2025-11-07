@@ -283,11 +283,11 @@
             <div class="section">
                 <h2>featured projects</h2>
 
-                <div class="project-card" onclick="showPage('centerstage')">
+                <div class="project-card" onclick="showPage('into-the-deep')">
                     <div class="project-header">
                         <div>
-                            <div class="project-title">centerstage - swerve drive</div>
-                            <div class="project-date">june 2024 - august 2024</div>
+                            <div class="project-title">into the deep - robot v2</div>
+                            <div class="project-date">december 2024 - march 2025</div>
                         </div>
                     </div>
                     <p class="project-description">
@@ -308,6 +308,8 @@
 
                 <div class="project-card" onclick="showPage('centerstage')">
                     <div class="project-header">
+                        <div>
+                            <div class="project-title">centerstage - swerve drive</div>
                             <div class="project-date">june 2024 - august 2024</div>
                         </div>
                     </div>
@@ -328,6 +330,8 @@
 
                 <div class="project-card" onclick="showPage('hexapod')">
                     <div class="project-header">
+                        <div>
+                            <div class="project-title">hexapod walking robot</div>
                             <div class="project-date">personal project</div>
                         </div>
                     </div>
@@ -335,12 +339,6 @@
                         six-legged walking robot with custom inverse kinematics and dynamic gait patterns.
                         features three-degree-of-freedom leg design for complex terrain navigation.
                     </p>
-                    <a href="https://github.com/jzhao60/Hexapod" target="_blank" class="github-link">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                        </svg>
-                        view on github
-                    </a>
                     <div class="project-tech">
                         <span class="tech-tag">inverse kinematics</span>
                         <span class="tech-tag">gait planning</span>
@@ -364,33 +362,40 @@
                     </div>
 
                     <p class="project-description">
-                        addressed main concerns from v1 by directly attaching the lift to the drivetrain and replacing
-                        the drv4b linkage with a wheel/spool assembly. added extensive crossbeaming for stability.
+                        for this redesign of our team's itd robot, i addressed the main concerns with the original robot
+                        by directly attaching the lift to the drivetrain instead of using a separate plate and using a
+                        wheel/spool assembly instead of a linkage. i also added a lot more crossbeams for stability.
                     </p>
+
+                    <div class="subsection">
+                        <h3>carousel wheel / spool</h3>
+                        <p>
+                            due to the complexity and unreliability of the drv4b, i opted to change it to a string-driven
+                            assembly, similar to that of the vertical extension but driven with servos. the spool had to be
+                            driven by servos due to the eight-motor limit imposed on ftc robots, and the weight of the slide
+                            assembly needed to be under a certain amount. the problem with the servos was that they could not
+                            output enough rpm to move the extendo at the speed required for the high cycles throughout each
+                            match, so i used a series of inverse kinematics equations in comparison to a motor of 1150 rpm
+                            to calculate the gear ratio necessary to achieve as close to the speed needed.
+                        </p>
+                    </div>
 
                     <div class="image-gallery">
                         <img src="maker port photos/carosel.png" alt="carousel wheel mechanism">
                         <img src="maker port photos/caro calcs.png" alt="inverse kinematics calculations">
-                        <img src="maker port photos/arm.png" alt="arm and claw assembly">
-                    </div>
-
-                    <div class="subsection">
-                        <h3>carousel wheel / spool system</h3>
-                        <p>
-                            transitioned from the complex drv4b to a string-driven assembly operated by servos due to
-                            ftc's eight-motor limit. the challenge was that servos couldn't achieve the required rpm
-                            for high-cycle operation. solved this using inverse kinematics equations compared to a
-                            1150 rpm motor to calculate the optimal gear ratio.
-                        </p>
                     </div>
 
                     <div class="subsection">
                         <h3>arm / claw assembly</h3>
                         <p>
-                            gained an additional degree of freedom for claw rotation. adopted an open-source design from
-                            gear wizards (ftc 16917). compacted the arm and reduced from two servo motors to one for
-                            weight savings.
+                            along with gaining another degree of freedom for the rotation of the claw, the design of the claw
+                            was changed to one that was open-sourced by gear wizards, ftc team 16917. additionally, the arm
+                            was compacted and driven by one servo motor instead of two for less weight.
                         </p>
+                    </div>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/arm.png" alt="arm and claw assembly">
                     </div>
 
                     <div class="project-tech">
@@ -410,35 +415,51 @@
                     </div>
 
                     <p class="project-description">
-                        first iteration featuring an extendo on the lift capable of intaking from both front and back.
-                        included innovative drv4b linkage and complex stringing system.
+                        my overall design for this year's game was to have an extendo on the lift that would be able to
+                        intake from both the front and back of the robot to score the scoring elements. this is the first
+                        version of the robot i designed for the game, as my team later did a rebuild.
                     </p>
 
                     <div class="image-gallery">
                         <img src="maker port photos/itd bot.png" alt="robot v1 overview">
                         <img src="maker port photos/old bot.png" alt="robot v1 side view">
-                        <img src="maker port photos/double reverse.png" alt="drv4b linkage">
-                        <img src="maker port photos/slides assembly.png" alt="slides assembly">
-                        <img src="maker port photos/slides.png" alt="slide mechanism">
-                        <img src="maker port photos/slides ex.png" alt="slide extension diagram">
                     </div>
 
                     <div class="subsection">
                         <h3>double reverse virtual four-bar (drv4b)</h3>
                         <p>
-                            inspired by ftc team 9614 hyperion, this linkage offered excellent range of motion reaching
-                            both sides of the pivot point. however, it proved bulky and torque-intensive. main issue was
-                            cantilevering causing the first stage to fail rotating the top gears. replaced with a two-bar
-                            for first qualifier reliability.
+                            this design was inspired by ftc team 9614 hyperion during their centerstage game, and i chose
+                            this linkage for its range of motion, being able to reach the back and front of its pivot point.
+                            however, it was bulky and required too much torque. its main issue was being cantilevered / not
+                            constrained well, causing the first stage in the linkage to often not rotate the gears at the top.
+                            for the first qualifier of the year, we replaced this linkage with a two-bar for reliability.
                         </p>
+                    </div>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/double reverse.png" alt="drv4b linkage">
+                    </div>
+
+                    <div class="subsection">
+                        <h3>slides assembly</h3>
+                    </div>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/slides assembly.png" alt="slides assembly">
+                        <img src="maker port photos/slides.png" alt="slide mechanism">
                     </div>
 
                     <div class="subsection">
                         <h3>stringing system</h3>
                         <p>
-                            complex rigging using only one motor per side for vertical extension. main challenges were
-                            tensioning and stability due to unstable slide mounting plate.
+                            for linear vertical extension, i used a complex rigging system that only relies on one motor
+                            for each side to retract and extend. the main issues it had were with tensioning and stability
+                            due to the plate the slides were mounted on being unstable.
                         </p>
+                    </div>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/slides ex.png" alt="slide extension diagram">
                     </div>
 
                     <div class="project-tech">
@@ -457,9 +478,11 @@
                     </div>
 
                     <p class="project-description">
-                        rapid prototyping challenge featuring telescoping slides with pivot mechanism using 3d printed
-                        gears and loony claw. used measurement-based cad approach rather than full drivetrain modeling.
-                        learning experience with stringing systems.
+                        in robot in two days, my team and i decided on having a telescoping mechanism using slides. i designed
+                        the pivot mechanism using 3d printed gears and included a loony claw on the end of our slides. instead
+                        of modeling the drivetrain, i decided to measure the distances i needed and put together the parts on
+                        the cad based on those measured distances. the main issue was that i was unfamiliar with stringing,
+                        and the stringing didn't work.
                     </p>
 
                     <div class="image-gallery">
@@ -490,29 +513,17 @@
                     </div>
 
                     <p class="project-description">
-                        summer project spanning five design iterations to achieve optimal compactness. each pod designed
-                        with modularity in mind for easy assembly and integration.
+                        for a team summer project, i spent two to three weeks making 5 different cad designs until i settled
+                        on one that i felt was satisfactory and built it. the hardest challenge of designing the swerve was
+                        creating one that was compact and though i wish i could've compacted it more, i am satisfied with the
+                        look of it. i designed each pod to be modular for easy assembly and integration with the other parts
+                        of the robot and i enjoyed creating a battery holder that connects the back two swerve pods and
+                        constrains the battery via a sliding plate that is held in by two pins.
                     </p>
 
                     <div class="image-gallery">
                         <img src="maker port photos/swerve.png" alt="swerve drive cad model">
                         <img src="maker port photos/swerve irl.png" alt="swerve drive physical build">
-                    </div>
-
-                    <div class="subsection">
-                        <h3>design process</h3>
-                        <p>
-                            spent two to three weeks iterating through different designs. the main challenge was creating
-                            a compact system while maintaining functionality. each pod is fully modular for easy servicing.
-                        </p>
-                    </div>
-
-                    <div class="subsection">
-                        <h3>battery integration</h3>
-                        <p>
-                            created a custom battery holder connecting the back two swerve pods. features a sliding plate
-                            constrained by two pins for secure battery mounting and easy access.
-                        </p>
                     </div>
 
                     <div class="project-tech">
@@ -532,20 +543,15 @@
                     </div>
 
                     <p class="project-description">
-                        redesigned intake addressing weight concerns from original flip-down design. ramp attached
-                        directly to drivetrain with all plates made from pla plastic for weight reduction.
+                        due to the weight of the original flip-down intake, i designed a new intake that was lighter due to
+                        having the ramp attached to the drivetrain rather than being a part of the intake and the plates were
+                        all made out of pla plastic. additionally, to prevent dragging, the intake would hover over the pixels.
+                        there are guides on the ramp and a cover on the top of the intake to prevent the pixels from getting
+                        stuck. its main issue was that it was hard to intake from preset stacks.
                     </p>
 
                     <div class="image-gallery">
                         <img src="maker port photos/intake.png" alt="intake mechanism">
-                    </div>
-
-                    <div class="subsection">
-                        <h3>design features</h3>
-                        <p>
-                            intake hovers over pixels to prevent dragging. includes guides on the ramp and top cover
-                            to prevent pixel jamming. main limitation was difficulty with preset stack intaking.
-                        </p>
                     </div>
 
                     <div class="project-tech">
@@ -564,21 +570,15 @@
                     </div>
 
                     <p class="project-description">
-                        one of my first cad projects addressing inaccuracy issues with bucket-style scoring element holder.
-                        inspired by tehnoz's design work.
+                        to solve the inaccuracy of the bucket design my team used to hold the scoring elements, i made a cad
+                        of a claw design which was one of my first few cad projects on my team. the claw arms were to be
+                        passively tied by rubber bands to the screws above it and two servos would push the claw arms down
+                        into the center of the pixel to hold it in place. i was inspired by tehnoz. though prototyped and
+                        proven to work, it required too much change on the robot then to implement.
                     </p>
 
                     <div class="image-gallery">
                         <img src="maker port photos/claw.png" alt="claw mechanism">
-                    </div>
-
-                    <div class="subsection">
-                        <h3>mechanism</h3>
-                        <p>
-                            claw arms passively tied with rubber bands to overhead screws. two servos push arms down into
-                            pixel center for secure grip. successfully prototyped but required extensive robot modifications
-                            to implement at the time.
-                        </p>
                     </div>
 
                     <div class="project-tech">
