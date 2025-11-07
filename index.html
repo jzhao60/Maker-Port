@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics Portfolio</title>
+    <title>robotics portfolio</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,409 +14,660 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #51AE7E;
+            color: #1a1a1a;
+            line-height: 1.6;
+            text-transform: lowercase;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
         }
 
-        .page {
-            display: none;
-            animation: fadeIn 0.5s;
+        header {
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease;
         }
 
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Home Page */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            color: white;
-        }
-
-        .hero h1 {
+        h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .season-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .season-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .season-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .season-card h2 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 2rem;
-        }
-
-        .season-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Project Pages */
-        .project-header {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .project-header h1 {
-            color: #667eea;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            font-size: 2.5rem;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
         }
 
-        .project-header .subtitle {
-            color: #666;
-            font-size: 1.1rem;
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(26, 26, 26, 0.7);
+            margin-bottom: 2rem;
+            font-weight: 400;
         }
 
-        .project {
-            background: white;
-            border-radius: 15px;
+        nav {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: rgba(26, 26, 26, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: #1a1a1a;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .project:hover {
-            transform: translateX(5px);
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
-        .project h2 {
-            color: #764ba2;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
             margin-bottom: 1rem;
-            font-size: 1.8rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .project h3 {
-            color: #667eea;
-            margin: 1.5rem 0 0.5rem 0;
-            font-size: 1.3rem;
+        .project-title {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
-        .project p {
-            color: #555;
+        .project-date {
+            color: rgba(26, 26, 26, 0.6);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .project-description {
+            color: rgba(26, 26, 26, 0.8);
+            margin-bottom: 1.5rem;
             line-height: 1.8;
-            margin-bottom: 1rem;
         }
 
-        .project ul {
-            margin-left: 1.5rem;
-            color: #555;
-            line-height: 1.8;
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
         }
 
-        .image-grid {
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.4);
+            color: rgba(26, 26, 26, 0.8);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+        }
+
+        .image-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin: 1.5rem 0;
         }
 
-        .image-grid img {
+        .image-gallery img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        .image-grid img:hover {
-            transform: scale(1.05);
+        .image-gallery img:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .github-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: #24292e;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            color: #1a1a1a;
             text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(26, 26, 26, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
             margin-top: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: 500;
         }
 
         .github-link:hover {
-            background: #000;
+            border-color: rgba(26, 26, 26, 0.5);
+            background: rgba(255, 255, 255, 0.3);
         }
 
-        .date-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+        .subsection {
+            margin: 1.5rem 0;
+        }
+
+        .subsection h3 {
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .subsection p {
+            color: rgba(26, 26, 26, 0.8);
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
+            h1 {
                 font-size: 2.5rem;
             }
-            
-            .nav-links {
+
+            .project-header {
+                flex-direction: column;
+            }
+
+            nav {
                 gap: 1rem;
             }
-            
-            .season-cards {
-                grid-template-columns: 1fr;
-            }
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            color: rgba(26, 26, 26, 0.6);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="nav-title">FTC Robotics Portfolio</div>
-            <div class="nav-links">
-                <a onclick="showPage('home')">Home</a>
-                <a onclick="showPage('centerstage')">Centerstage</a>
-                <a onclick="showPage('into-the-deep')">Into the Deep</a>
-                <a onclick="showPage('hexapod')">Hexapod</a>
-            </div>
-        </div>
-    </nav>
-
     <div class="container">
-        <!-- Home Page -->
+        <header>
+            <h1>robotics portfolio</h1>
+            <p class="subtitle">ftc cad design & mechanical engineering</p>
+            <nav>
+                <a onclick="showPage('home')" class="active">home</a>
+                <a onclick="showPage('into-the-deep')">into the deep</a>
+                <a onclick="showPage('centerstage')">centerstage</a>
+                <a onclick="showPage('hexapod')">hexapod</a>
+            </nav>
+        </header>
+
+        <!-- HOME PAGE -->
         <div id="home" class="page active">
-            <div class="hero">
-                <h1>CAD Design Portfolio</h1>
-                <p>Exploring innovative robotics solutions through iterative design</p>
+            <div class="section">
+                <h2>about</h2>
+                <p style="color: rgba(26, 26, 26, 0.8); line-height: 1.8;">
+                    i design mechanical systems and cad models for ftc robotics competitions. my work focuses on innovative mechanisms,
+                    optimized kinematics, and iterative design processes to create competitive robots. from complex linkages to
+                    servo-driven assemblies, i enjoy solving engineering challenges through creative solutions.
+                </p>
             </div>
-            
-            <div class="season-cards">
-                <div class="season-card" onclick="showPage('into-the-deep')">
-                    <h2>Into the Deep</h2>
-                    <p>2024-2025 Season</p>
-                    <p>Featuring advanced extendo mechanisms, servo-driven spool systems, and optimized lift assemblies with inverse kinematics calculations.</p>
+
+            <div class="section">
+                <h2>featured projects</h2>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">into the deep - robot v2</div>
+                            <div class="project-date">december 2024 - march 2025</div>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        complete redesign featuring servo-driven spool mechanism with inverse kinematics calculations
+                        to achieve optimal speed ratios. implemented direct lift-to-drivetrain mounting for improved stability.
+                    </p>
+                    <div class="image-gallery">
+                        <img src="maker port photos/carosel.png" alt="carousel wheel">
+                        <img src="maker port photos/caro calcs.png" alt="kinematics calculations">
+                        <img src="maker port photos/arm.png" alt="arm assembly">
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">inverse kinematics</span>
+                        <span class="tech-tag">servo control</span>
+                        <span class="tech-tag">cad design</span>
+                    </div>
                 </div>
-                
-                <div class="season-card" onclick="showPage('centerstage')">
-                    <h2>Centerstage</h2>
-                    <p>2023-2024 Season</p>
-                    <p>Showcasing modular swerve drive pods, lightweight PLA intakes, and precision claw mechanisms for accurate scoring.</p>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">swerve drive</div>
+                            <div class="project-date">june 2024 - august 2024</div>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        modular swerve drive system with custom battery holder integration. five iterations to achieve
+                        compact design while maintaining easy assembly and serviceability.
+                    </p>
+                    <div class="image-gallery">
+                        <img src="maker port photos/swerve.png" alt="swerve drive cad">
+                        <img src="maker port photos/swerve irl.png" alt="swerve drive built">
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">modular design</span>
+                        <span class="tech-tag">swerve drive</span>
+                        <span class="tech-tag">mechanical integration</span>
+                    </div>
                 </div>
-                
-                <div class="season-card" onclick="showPage('hexapod')">
-                    <h2>Hexapod</h2>
-                    <p>Personal Project</p>
-                    <p>Six-legged walking robot with custom inverse kinematics and gait patterns for dynamic locomotion.</p>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">hexapod walking robot</div>
+                            <div class="project-date">personal project</div>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        six-legged walking robot with custom inverse kinematics and dynamic gait patterns.
+                        features three-degree-of-freedom leg design for complex terrain navigation.
+                    </p>
+                    <a href="https://github.com/jzhao60/Hexapod" target="_blank" class="github-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        view on github
+                    </a>
+                    <div class="project-tech">
+                        <span class="tech-tag">inverse kinematics</span>
+                        <span class="tech-tag">gait planning</span>
+                        <span class="tech-tag">3d printing</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Into the Deep Page -->
+        <!-- INTO THE DEEP PAGE -->
         <div id="into-the-deep" class="page">
-            <div class="project-header">
-                <h1>Into the Deep</h1>
-                <p class="subtitle">2024-2025 Season Projects</p>
-            </div>
+            <div class="section">
+                <h2>into the deep (2024-2025)</h2>
 
-            <div class="project">
-                <span class="date-badge">December 2024 - March 2025</span>
-                <h2>Into the Deep Robot V2</h2>
-                <p>This redesign addressed the main concerns with the original robot by directly attaching the lift to the drivetrain instead of using a separate plate and using a wheel/spool assembly instead of a linkage. Added significantly more crossbeams for improved stability.</p>
-                
-                <h3>Carousel Wheel / Spool</h3>
-                <p>Due to the complexity and unreliability of the DRV4B, I transitioned to a string-driven assembly similar to the vertical extension but driven with servos. The spool had to be servo-driven due to the eight-motor limit imposed on FTC robots, and the weight of the slide assembly needed to remain under a certain threshold.</p>
-                <p>The challenge with servos was their inability to output enough RPM to move the extendo at the required speed for high-cycle performance throughout each match. To solve this, I used a series of inverse kinematics equations in comparison to a motor of 1150 RPM to calculate the necessary gear ratio to achieve speeds as close as possible to what was needed.</p>
-                
-                <h3>Arm / Claw Assembly</h3>
-                <p>Gained an additional degree of freedom for claw rotation. The claw design was changed to one that was open-sourced by Gear Wizards, FTC team 16917. Additionally, the arm was compacted and driven by one servo motor instead of two, reducing weight.</p>
-            </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">robot v2 - complete redesign</div>
+                            <div class="project-date">december 2024 - march 2025</div>
+                        </div>
+                    </div>
 
-            <div class="project">
-                <span class="date-badge">September 2024 - December 2024</span>
-                <h2>Into the Deep Robot V1</h2>
-                <p>My overall design concept was to create an extendo on the lift that would be able to intake from both the front and back of the robot to score the game elements. This was the first version before the team rebuild.</p>
-                
-                <h3>Double Reverse Virtual Four-Bar (DRV4B)</h3>
-                <p>Inspired by FTC team 9614 Hyperion during their Centerstage game, I chose this linkage for its impressive range of motion, being able to reach both the back and front of its pivot point. However, the design proved bulky and required excessive torque.</p>
-                <p>The main issue was the cantilever design and poor constraint, causing the first stage in the linkage to often fail to rotate the gears at the top. For the first qualifier of the year, we replaced this linkage with a two-bar for reliability.</p>
-                
-                <h3>Stringing System</h3>
-                <p>For linear vertical extension, I implemented a complex rigging system that relied on only one motor per side to retract and extend. The main challenges were with tensioning and stability due to the plate mounting the slides being unstable.</p>
-            </div>
+                    <p class="project-description">
+                        addressed main concerns from v1 by directly attaching the lift to the drivetrain and replacing
+                        the drv4b linkage with a wheel/spool assembly. added extensive crossbeaming for stability.
+                    </p>
 
-            <div class="project">
-                <span class="date-badge">September 2024</span>
-                <h2>Robot in Two Days</h2>
-                <p>My team and I decided on a telescoping mechanism using slides. I designed the pivot mechanism using 3D printed gears and included a loony claw on the end of our slides.</p>
-                <p>Instead of modeling the drivetrain, I measured the necessary distances and assembled the parts on CAD based on those measurements. The main issue was my unfamiliarity with stringing systems, and the stringing ultimately didn't work as intended.</p>
-            </div>
-        </div>
+                    <div class="image-gallery">
+                        <img src="maker port photos/carosel.png" alt="carousel wheel mechanism">
+                        <img src="maker port photos/caro calcs.png" alt="inverse kinematics calculations">
+                        <img src="maker port photos/arm.png" alt="arm and claw assembly">
+                    </div>
 
-        <!-- Centerstage Page -->
-        <div id="centerstage" class="page">
-            <div class="project-header">
-                <h1>Centerstage</h1>
-                <p class="subtitle">2023-2024 Season Projects</p>
-            </div>
+                    <div class="subsection">
+                        <h3>carousel wheel / spool system</h3>
+                        <p>
+                            transitioned from the complex drv4b to a string-driven assembly operated by servos due to
+                            ftc's eight-motor limit. the challenge was that servos couldn't achieve the required rpm
+                            for high-cycle operation. solved this using inverse kinematics equations compared to a
+                            1150 rpm motor to calculate the optimal gear ratio.
+                        </p>
+                    </div>
 
-            <div class="project">
-                <span class="date-badge">June 2024 - August 2024</span>
-                <h2>Swerve Drive</h2>
-                <p>For a team summer project, I spent two to three weeks creating 5 different CAD designs until I settled on one that felt satisfactory and proceeded to build it. The hardest challenge was creating a swerve that was compact, and though I wish I could've made it more compact, I'm satisfied with the final result.</p>
-                <p>I designed each pod to be modular for easy assembly and integration with other robot parts. I particularly enjoyed creating a battery holder that connects the back two swerve pods and constrains the battery via a sliding plate held in by two pins.</p>
-            </div>
+                    <div class="subsection">
+                        <h3>arm / claw assembly</h3>
+                        <p>
+                            gained an additional degree of freedom for claw rotation. adopted an open-source design from
+                            gear wizards (ftc 16917). compacted the arm and reduced from two servo motors to one for
+                            weight savings.
+                        </p>
+                    </div>
 
-            <div class="project">
-                <span class="date-badge">January 2024 - June 2024</span>
-                <h2>Intake</h2>
-                <p>Due to the weight of the original flip-down intake, I designed a new intake that was significantly lighter by attaching the ramp to the drivetrain rather than making it part of the intake assembly. All plates were made from PLA plastic to reduce weight.</p>
-                <p>To prevent dragging, the intake hovers over the pixels. There are guides on the ramp and a cover on the top of the intake to prevent pixels from getting stuck. The main issue was difficulty intaking from preset stacks.</p>
-            </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">inverse kinematics</span>
+                        <span class="tech-tag">string drive</span>
+                        <span class="tech-tag">servo control</span>
+                        <span class="tech-tag">weight optimization</span>
+                    </div>
+                </div>
 
-            <div class="project">
-                <span class="date-badge">December 2023</span>
-                <h2>Claw</h2>
-                <p>To solve the inaccuracy of the bucket design my team used to hold scoring elements, I created one of my first CAD projects on the team: a claw design.</p>
-                <p>The claw arms were to be passively tied by rubber bands to screws above them, and two servos would push the claw arms down into the center of the pixel to hold it in place. I was inspired by TehnoZ's design.</p>
-                <p>Though prototyped and proven to work, it required too much change on the robot at that time to implement.</p>
-            </div>
-        </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">robot v1 - initial design</div>
+                            <div class="project-date">september 2024 - december 2024</div>
+                        </div>
+                    </div>
 
-        <!-- Hexapod Page -->
-        <div id="hexapod" class="page">
-            <div class="project-header">
-                <h1>Hexapod Walking Robot</h1>
-                <p class="subtitle">Personal Project</p>
-                <a href="https://github.com/jzhao60/Hexapod" target="_blank" class="github-link">
-                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    View on GitHub
-                </a>
-            </div>
+                    <p class="project-description">
+                        first iteration featuring an extendo on the lift capable of intaking from both front and back.
+                        included innovative drv4b linkage and complex stringing system.
+                    </p>
 
-            <div class="project">
-                <h2>Project Overview</h2>
-                <p>A six-legged walking robot designed from the ground up, featuring custom mechanical design, inverse kinematics calculations, and dynamic gait patterns for stable locomotion across various terrains.</p>
-                
-                <div class="image-grid">
-                    <img src="https://raw.githubusercontent.com/jzhao60/Hexapod/main/images/image1.png" alt="Hexapod leg mechanism" onerror="this.style.display='none'">
-                    <img src="https://raw.githubusercontent.com/jzhao60/Hexapod/main/images/image2.png" alt="Full hexapod assembly" onerror="this.style.display='none'">
-                    <img src="https://raw.githubusercontent.com/jzhao60/Hexapod/main/images/image3.png" alt="Hexapod gait pattern" onerror="this.style.display='none'">
+                    <div class="image-gallery">
+                        <img src="maker port photos/itd bot.png" alt="robot v1 overview">
+                        <img src="maker port photos/old bot.png" alt="robot v1 side view">
+                        <img src="maker port photos/double reverse.png" alt="drv4b linkage">
+                        <img src="maker port photos/slides assembly.png" alt="slides assembly">
+                        <img src="maker port photos/slides.png" alt="slide mechanism">
+                        <img src="maker port photos/slides ex.png" alt="slide extension diagram">
+                    </div>
+
+                    <div class="subsection">
+                        <h3>double reverse virtual four-bar (drv4b)</h3>
+                        <p>
+                            inspired by ftc team 9614 hyperion, this linkage offered excellent range of motion reaching
+                            both sides of the pivot point. however, it proved bulky and torque-intensive. main issue was
+                            cantilevering causing the first stage to fail rotating the top gears. replaced with a two-bar
+                            for first qualifier reliability.
+                        </p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>stringing system</h3>
+                        <p>
+                            complex rigging using only one motor per side for vertical extension. main challenges were
+                            tensioning and stability due to unstable slide mounting plate.
+                        </p>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">drv4b linkage</span>
+                        <span class="tech-tag">complex rigging</span>
+                        <span class="tech-tag">dual-direction intake</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">robot in two days</div>
+                            <div class="project-date">september 2024</div>
+                        </div>
+                    </div>
+
+                    <p class="project-description">
+                        rapid prototyping challenge featuring telescoping slides with pivot mechanism using 3d printed
+                        gears and loony claw. used measurement-based cad approach rather than full drivetrain modeling.
+                        learning experience with stringing systems.
+                    </p>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/ri3d.png" alt="robot in 3 days cad">
+                        <img src="maker port photos/ri3d irl.png" alt="robot in 3 days built">
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">rapid prototyping</span>
+                        <span class="tech-tag">3d printed gears</span>
+                        <span class="tech-tag">telescoping mechanism</span>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="project">
-                <h2>Mechanical Design</h2>
-                <p>Each leg features a three-degree-of-freedom design with coxa, femur, and tibia segments, allowing for complex movement patterns. The body structure provides a stable platform for electronics and battery placement while maintaining a low center of gravity.</p>
-                
-                <h3>Key Features</h3>
-                <p>The hexapod design incorporates servo-driven joints with precise angular control, lightweight 3D-printed components for the leg structure, and modular leg assembly for easy maintenance and modifications. Custom mounting brackets ensure proper servo alignment and reduce mechanical stress during operation.</p>
-            </div>
+        <!-- CENTERSTAGE PAGE -->
+        <div id="centerstage" class="page">
+            <div class="section">
+                <h2>centerstage (2023-2024)</h2>
 
-            <div class="project">
-                <h2>Kinematics & Control</h2>
-                <p>Implemented inverse kinematics algorithms to translate desired foot positions into servo angles, enabling smooth and natural walking motion. The control system supports multiple gait patterns including tripod gait for speed and wave gait for stability.</p>
-                
-                <h3>Technical Implementation</h3>
-                <p>The software calculates joint angles in real-time based on body position and leg trajectory. Coordinated leg movements ensure the hexapod maintains static stability, with at least three legs in contact with the ground at all times during the tripod gait.</p>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">swerve drive system</div>
+                            <div class="project-date">june 2024 - august 2024</div>
+                        </div>
+                    </div>
+
+                    <p class="project-description">
+                        summer project spanning five design iterations to achieve optimal compactness. each pod designed
+                        with modularity in mind for easy assembly and integration.
+                    </p>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/swerve.png" alt="swerve drive cad model">
+                        <img src="maker port photos/swerve irl.png" alt="swerve drive physical build">
+                    </div>
+
+                    <div class="subsection">
+                        <h3>design process</h3>
+                        <p>
+                            spent two to three weeks iterating through different designs. the main challenge was creating
+                            a compact system while maintaining functionality. each pod is fully modular for easy servicing.
+                        </p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>battery integration</h3>
+                        <p>
+                            created a custom battery holder connecting the back two swerve pods. features a sliding plate
+                            constrained by two pins for secure battery mounting and easy access.
+                        </p>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">swerve drive</span>
+                        <span class="tech-tag">modular design</span>
+                        <span class="tech-tag">iterative development</span>
+                        <span class="tech-tag">custom mounting</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">lightweight intake</div>
+                            <div class="project-date">january 2024 - june 2024</div>
+                        </div>
+                    </div>
+
+                    <p class="project-description">
+                        redesigned intake addressing weight concerns from original flip-down design. ramp attached
+                        directly to drivetrain with all plates made from pla plastic for weight reduction.
+                    </p>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/intake.png" alt="intake mechanism">
+                    </div>
+
+                    <div class="subsection">
+                        <h3>design features</h3>
+                        <p>
+                            intake hovers over pixels to prevent dragging. includes guides on the ramp and top cover
+                            to prevent pixel jamming. main limitation was difficulty with preset stack intaking.
+                        </p>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">weight optimization</span>
+                        <span class="tech-tag">pla construction</span>
+                        <span class="tech-tag">anti-jam design</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">precision claw</div>
+                            <div class="project-date">december 2023</div>
+                        </div>
+                    </div>
+
+                    <p class="project-description">
+                        one of my first cad projects addressing inaccuracy issues with bucket-style scoring element holder.
+                        inspired by tehnoz's design work.
+                    </p>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/claw.png" alt="claw mechanism">
+                    </div>
+
+                    <div class="subsection">
+                        <h3>mechanism</h3>
+                        <p>
+                            claw arms passively tied with rubber bands to overhead screws. two servos push arms down into
+                            pixel center for secure grip. successfully prototyped but required extensive robot modifications
+                            to implement at the time.
+                        </p>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">servo actuation</span>
+                        <span class="tech-tag">passive tension</span>
+                        <span class="tech-tag">precision gripping</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">competition robot</div>
+                            <div class="project-date">2023-2024 season</div>
+                        </div>
+                    </div>
+
+                    <p class="project-description">
+                        full competition robot showcasing integrated systems and mechanisms throughout the season.
+                    </p>
+
+                    <div class="image-gallery">
+                        <img src="maker port photos/competition picture.png" alt="competition robot in action">
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">system integration</span>
+                        <span class="tech-tag">competition ready</span>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- HEXAPOD PAGE -->
+        <div id="hexapod" class="page">
+            <div class="section">
+                <h2>hexapod walking robot</h2>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">six-legged walking robot</div>
+                            <div class="project-date">personal project</div>
+                        </div>
+                    </div>
+
+                    <p class="project-description">
+                        complete hexapod robot designed from scratch featuring custom inverse kinematics, dynamic gait
+                        patterns, and modular leg assemblies for stable locomotion across varied terrain.
+                    </p>
+
+                    <a href="https://github.com/jzhao60/Hexapod" target="_blank" class="github-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        view on github
+                    </a>
+
+                    <div class="subsection">
+                        <h3>mechanical design</h3>
+                        <p>
+                            each leg features three degrees of freedom (coxa, femur, tibia) for complex movement patterns.
+                            body structure provides stable electronics platform while maintaining low center of gravity.
+                            custom servo mounting brackets reduce mechanical stress during operation.
+                        </p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>kinematics & control</h3>
+                        <p>
+                            implemented inverse kinematics algorithms translating desired foot positions into servo angles
+                            for smooth, natural motion. supports multiple gait patterns: tripod gait for speed and wave gait
+                            for stability. real-time joint angle calculation maintains static stability with minimum three
+                            legs in ground contact.
+                        </p>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">inverse kinematics</span>
+                        <span class="tech-tag">gait planning</span>
+                        <span class="tech-tag">servo control</span>
+                        <span class="tech-tag">3d printing</span>
+                        <span class="tech-tag">real-time control</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>robotics cad portfolio © 2024</p>
+        </footer>
     </div>
 
     <script>
         function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
+
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
